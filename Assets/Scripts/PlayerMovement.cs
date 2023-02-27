@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 
@@ -16,11 +17,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
 
     public float speed;
-
-    class AnimatorArrayNames
-    {
-        public static string Speed = "Speed";
-    }
 
 
     void Start()
@@ -58,4 +54,9 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
     }
+    protected class AnimatorArrayNames
+    {
+        public static string Speed = "Speed";
+    }
 }
+
