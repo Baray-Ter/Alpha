@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     protected class AnimatorArrayNames
     {
         public static string Speed = "Speed";
-        public static string Jump = "Jump";
     }
 }
 
