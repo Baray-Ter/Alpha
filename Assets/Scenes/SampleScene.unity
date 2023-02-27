@@ -477,7 +477,6 @@ GameObject:
   - component: {fileID: 1968172702}
   - component: {fileID: 1968172698}
   - component: {fileID: 1968172700}
-  - component: {fileID: 1968172703}
   - component: {fileID: 1968172704}
   m_Layer: 0
   m_Name: Player
@@ -585,6 +584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e06f8ef5344e0a64c949a6ab774135fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actions: {fileID: -944628639613478452, guid: 05c131f6b2d83244787f9346d37009b1, type: 3}
   animator: {fileID: 1968172695}
   speed: 10
 --- !u!50 &1968172700
@@ -658,21 +658,6 @@ MonoBehaviour:
   m_DefaultActionMap: gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &1968172703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1968172694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03dbdfe12bf88449a8d6b38b16570f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAudio: {fileID: 0}
-  playerInput: {fileID: 0}
-  playerMovement: {fileID: 0}
 --- !u!61 &1968172704
 BoxCollider2D:
   m_ObjectHideFlags: 0

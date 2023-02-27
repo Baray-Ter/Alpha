@@ -54,9 +54,11 @@ public class PlayerMovement : MonoBehaviour
     {
         rb2d.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
     }
+
     protected class AnimatorArrayNames
     {
         public static string Speed = "Speed";
+        public static string Jump = "Jump";
     }
 }
 
