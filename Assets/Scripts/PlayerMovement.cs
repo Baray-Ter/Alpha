@@ -17,11 +17,15 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDirection;
 
     public float speed;
+    public float jumpPower;
+    public float gravity;
 
+    private bool notFalling = true;
 
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        rb2d.gravityScale = gravity;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -30,7 +34,23 @@ public class PlayerMovement : MonoBehaviour
         transform.localScale = FlipSprite(moveDirection);
     }
 
-    public Vector2 FlipSprite(Vector2 direction)
+    public void Jump(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            rb2d.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
+            animator.SetBool(AnimatorVariableNames.Jump, true);
+            notFalling = true;
+            animator.SetBool(AnimatorVariableNames.Jump, true);
+        }
+    }
+
+    private void FallAnimation()
+    {
+        animator.SetBool(AnimatorVariableNames.Fall, true);
+    }
+
+    private Vector2 FlipSprite(Vector2 direction)
     {
         SelectAnimation(direction);
 
@@ -43,21 +63,36 @@ public class PlayerMovement : MonoBehaviour
 
         return transform.localScale;
     }
-
+    
+    //decides if player idling or running
     private void SelectAnimation(Vector2 direction)
     {
-        animator.SetFloat(AnimatorArrayNames.Speed, Math.Abs(direction.x));
+        animator.SetFloat(AnimatorVariableNames.Speed, Math.Abs(direction.x));
     }
-
-
+    
     private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(moveDirection.x * speed, moveDirection.y * speed);
+        rb2d.velocity = new Vector2(moveDirection.x * speed, rb2d.velocity.y);
     }
 
-    protected class AnimatorArrayNames
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        animator.SetBool(AnimatorVariableNames.Jump, false);
+        animator.SetBool(AnimatorVariableNames.Fall, false);
+    }
+
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        if (!animator.GetBool(AnimatorVariableNames.Jump))
+        {
+            animator.SetBool(AnimatorVariableNames.Fall, true);
+        }
+    }
+
+    private class AnimatorVariableNames
     {
         public static string Speed = "Speed";
+        public static string Jump = "Jump";
+        public static string Fall = "Fall";
     }
 }
-
