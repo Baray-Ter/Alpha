@@ -59,10 +59,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void AirJump(){
-
+        
         rb2d.velocity = Vector2.zero;
 
         rb2d.AddForce(Vector2.up * doubleJumpPower, ForceMode2D.Impulse);
+
+        //fail safe
+        animator.SetBool(AnimatorVariableNames.Jump, true);
 
         animator.SetBool(AnimatorVariableNames.AirJump, true);
     }
@@ -99,16 +102,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        animator.SetBool(AnimatorVariableNames.Jump, false);
-        animator.SetBool(AnimatorVariableNames.Fall, false);
-        animator.SetBool(AnimatorVariableNames.AirJump, false);
+        if (IsGrounded())
+        {
+            animator.SetBool(AnimatorVariableNames.Jump, false);
+            animator.SetBool(AnimatorVariableNames.Fall, false);
+            animator.SetBool(AnimatorVariableNames.AirJump, false);
 
-        doubleJump = true;
+            doubleJump = true;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D other)
     {
-        if (!animator.GetBool(AnimatorVariableNames.Jump))
+        if (!animator.GetBool(AnimatorVariableNames.Jump) && !IsGrounded())
         {
             animator.SetBool(AnimatorVariableNames.Fall, true);
         }
