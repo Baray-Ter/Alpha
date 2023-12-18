@@ -24,93 +24,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "move",
-                    "type": "Value",
-                    "id": "a07b0604-9398-4b79-ad9f-c038ea3ff4d4",
-                    "expectedControlType": "Vector2",
+                    "name": "ShootPortal",
+                    "type": "Button",
+                    "id": "68d0e2b5-0cb4-41bd-8424-3698fb8f7bb8",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "Two Modifiers (Go Left)",
-                    "id": "6ade0ed2-53bc-407b-9dcf-c2ba6558dfc7",
-                    "path": "TwoModifiers",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier1",
-                    "id": "ece96bb4-8d02-410c-b2ac-3c52dce70fa7",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier2",
-                    "id": "eaa1ce26-1dee-453c-a4c6-4d029f15dae8",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "3c726f2c-9e16-4b1f-9344-5230b9fa0039",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier1",
-                    "id": "c7cf6246-19ba-4736-9cf4-c93bb5136f2e",
-                    "path": "<Keyboard>/shift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "modifier2",
-                    "id": "1b4223c3-b0bb-48ff-901d-e6184cafb934",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "6c117e86-f05a-4ecd-b642-461bd9417eb1",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "7567a3fe-e4a7-4921-aae4-b14cee83447a",
@@ -130,6 +53,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "ShootOrangePortal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "695c3a12-d634-47dc-aa61-40478afeef7b",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootPortal",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "abd2dc37-9150-480a-82c4-2bb1dae2e18c",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ShootPortal",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

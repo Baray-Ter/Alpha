@@ -7,7 +7,7 @@ public class OrbitMovement : MonoBehaviour
 {
     public Transform Player;
 
-    [Tooltip("Lower is faster")]
+    [Tooltip("Higher is faster")]
     public float speed;
 
     private Rigidbody2D _rb2d;
