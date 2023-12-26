@@ -54,6 +54,8 @@ public class OrbitShootPortal : MonoBehaviour
             Vector2 otherColliderBoundsMax = hit2D.collider.bounds.max;
             Vector2 otherColliderBoundsMin = hit2D.collider.bounds.min;
 
+            Debug.Log(hit2D.collider.name);
+
             Vector2 hit2DPoint = hit2D.point;
 
             if (WidthControll(hit2D.transform.localScale, portalScale) && HeightControll(hit2D.transform.localScale, portalScale))
@@ -65,6 +67,9 @@ public class OrbitShootPortal : MonoBehaviour
                 {
                     selectedPortalEndPoint = new Vector2(otherColliderBoundsMax.x - (portalScale.x / 2),
                     CalculateMinAndMaxYAxis(otherColliderBoundsMax, otherColliderBoundsMin, hit2DPoint, portalScale));
+                    //for more pricise portal locations change portal scale with 
+
+                    Debug.Log(selectedPortalEndPoint);
 
                     OrbitPosition = transform.position;
 
@@ -170,7 +175,7 @@ public class OrbitShootPortal : MonoBehaviour
         }
     }
 
-    private bool WidthControll(Vector2 targetObject, Vector2 portalScale){
+    private bool WidthControll(Vector2 targetObject, Vector2 portalScale) {
 
         if (targetObject.x >= portalScale.x)
         {
@@ -192,19 +197,18 @@ public class OrbitShootPortal : MonoBehaviour
     }
 
     //stops portal to go over walls (vertical walls)
-    private float CalculateMinAndMaxYAxis(Vector2 maxBounds, Vector2 minBounds, Vector2 raycastPoint, Vector2 portalScale)
+    private float CalculateMinAndMaxYAxis(Vector2 otherColliderBoundsMax, Vector2 otherColliderBoundsMin, Vector2 raycastPoint, Vector2 portalScale)
     {
-
         float portalHalfLenght = portalScale.y / 2;
 
-        if (portalHalfLenght + raycastPoint.y > maxBounds.y)
+        if (portalHalfLenght + raycastPoint.y > otherColliderBoundsMax.y)
         {
-            return maxBounds.y - portalHalfLenght;
+            return otherColliderBoundsMax.y - portalHalfLenght;
         }
 
-        if (raycastPoint.y - portalHalfLenght < minBounds.y)
+        if (raycastPoint.y - portalHalfLenght < otherColliderBoundsMin.y)
         {
-            return minBounds.y + portalHalfLenght;
+            return otherColliderBoundsMin.y + portalHalfLenght;
         }
 
         return raycastPoint.y;
