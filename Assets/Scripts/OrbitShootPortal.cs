@@ -7,8 +7,7 @@ using UnityEngine.InputSystem;
 
 public class OrbitShootPortal : MonoBehaviour
 {
-    public delegate void raycast(GameObject gameObject);
-    public static event raycast RaycastHitGameObject;
+    public LayerMask ignoreLayer;
 
 
     public GameObject BluePortal;
@@ -42,7 +41,7 @@ public class OrbitShootPortal : MonoBehaviour
         {
             Vector2 _mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, _mousePosition - (Vector2)transform.position);
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, _mousePosition - (Vector2)transform.position, 100f, ~ignoreLayer);
 
             Debug.DrawRay(transform.position, _mousePosition - (Vector2)transform.position, Color.red);      
 
@@ -54,7 +53,7 @@ public class OrbitShootPortal : MonoBehaviour
             Vector2 otherColliderBoundsMax = hit2D.collider.bounds.max;
             Vector2 otherColliderBoundsMin = hit2D.collider.bounds.min;
 
-            Debug.Log(hit2D.collider.name);
+            //Debug.Log(hit2D.collider.name);
 
             Vector2 hit2DPoint = hit2D.point;
 
@@ -69,7 +68,7 @@ public class OrbitShootPortal : MonoBehaviour
                     CalculateMinAndMaxYAxis(otherColliderBoundsMax, otherColliderBoundsMin, hit2DPoint, portalScale));
                     //for more pricise portal locations change portal scale with 
 
-                    Debug.Log(selectedPortalEndPoint);
+                    //Debug.Log(selectedPortalEndPoint);
 
                     OrbitPosition = transform.position;
 
@@ -78,7 +77,8 @@ public class OrbitShootPortal : MonoBehaviour
 
                     sendSelectedPortal = true;
 
-                    RaycastHitGameObject.Invoke(hit2D.collider.gameObject);
+                    //Debug.Log(hit2D.collider.gameObject);
+                    //RaycastHitGameObject.Invoke(hit2D.collider.gameObject);
 
                     return; 
                 }
@@ -106,7 +106,7 @@ public class OrbitShootPortal : MonoBehaviour
         {
             Vector2 _mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
 
-            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, _mousePosition - (Vector2)transform.position);
+            RaycastHit2D hit2D = Physics2D.Raycast(transform.position, _mousePosition - (Vector2)transform.position, 100f, ~ignoreLayer);
 
             if (hit2D == false)
             {
