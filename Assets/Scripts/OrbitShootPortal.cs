@@ -169,6 +169,18 @@ public class OrbitShootPortal : MonoBehaviour
             {
                 selectedPortal.transform.position = selectedPortalEndPoint;
 
+                if (selectedPortalEndPoint.x < 0 && selectedPortal.transform.localScale.x > 0)
+                {
+                    //flip portal depending on side
+                    selectedPortal.transform.localScale = new Vector2(selectedPortal.transform.localScale.x * -1, selectedPortal.transform.localScale.y);
+                }
+
+                if (selectedPortalEndPoint.x > 0 && selectedPortal.transform.localScale.x < 0)
+                {
+                    //flip portal depending on side
+                    selectedPortal.transform.localScale = new Vector2(selectedPortal.transform.localScale.x * -1, selectedPortal.transform.localScale.y);
+                }
+
                 time = 0;
                 sendSelectedPortal = false;
             }

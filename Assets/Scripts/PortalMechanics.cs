@@ -5,30 +5,17 @@ using UnityEngine;
 
 public class PortalMechanics : MonoBehaviour
 {
-    TeleportGameObject teleport;
-
-    private Vector2 m_EnteringPosition;
-    private Vector2 m_ExitingPosition;
-
-    private void Start()
-    {
-        teleport = gameObject.AddComponent<TeleportGameObject>();
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        m_EnteringPosition = other.transform.localScale;
+        //TeleportGameObject.Instance.momentum = other.gameObject.GetComponent<Rigidbody2D>().velocity;
         other.gameObject.layer = 7;
+        //TeleportGameObject.Instance.OnPortalEnter(other.transform.localScale, other.gameObject);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        m_ExitingPosition = other.transform.localScale;
-        other.gameObject.layer = 6;
-
-        if (m_EnteringPosition.x == m_ExitingPosition.x)
-        {
-            TeleportGameObject.Instance.MyMethod(gameObject, other.gameObject);
-        }
+        //TeleportGameObject.Instance.momentum = Vector2.zero;
+        //other.gameObject.layer = 6;
+        //TeleportGameObject.Instance.OnPortalExit(other.transform.localScale, other.gameObject, gameObject);
     }
 }
